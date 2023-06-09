@@ -1,0 +1,10 @@
+#Menyalin repository
+$ git clone <url>
+$ git clone c:/xampp/htdocs/myapp
+$ git clone https://github/ranjidalii/myapp
+
+# mengambi/download commit dari git remote
+$ git  pull origin master
+
+# mengirim/mengunggah  commit
+$ git push origin master

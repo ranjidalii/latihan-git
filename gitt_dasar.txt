@@ -1,0 +1,94 @@
+git config --global user.name "userName"
+git config --globbal user.email "email"
+
+#menggunakan VS Code (optional)
+$ git config --global core.editor "code --wait"
+$ git config --global diff.tool "default-difftool"
+$ git config --global difftool.default-difftool.cmd "code --wait --diff \$LOCAL \$REMOTE"
+
+# melihan konfigurasi git
+$ git config --global --list --show-origin
+
+GIT DASAR
+# Repository / Project
+membuat repository :
+$ git init
+
+# Git status
+$git status
+
+# Workflow
+Three Tree : Working(1)->Staging Index(2)->Repository(3)
+ 1 -> 2 : # git add
+ 2 -> 3 : # git commit
+
+# Hash
+ Snapshot = perubahan pada file , snapshot mengasilkan Hash
+
+# membatalkan (menghapus) file di working directory
+$ git clean -f
+
+# membatalkan perubahan file dan penghapusan file (@ working directory)
+$ git restore namefile
+
+# membatalkan / mengembalikan file yang sudah dihapus dan di dalam staging (add)
+$ git restore --stage namefile
+$ git restore namefile
+
+# membatalkan /mengembalikan file yang terhapus dan sudah commit
+-> tidak ada caranya
+-> dapat dikembalikan dengan teknik : Rollback commit / Revert commit 
+
+# commit Log
+$ git log
+
+# commit Log sederhana
+$ git log --online
+
+# commit Log graph
+$ git log --oneline --graph
+
+# melihat detail commit
+$ git show hash
+
+# membandingkan commit
+$ git diff hash_1 hash_2
+$ git difftool hash_1 hash_2   # dengan bantuaan vscode
+
+# rename (gabungan delete dan add)
+
+# reset commit => untuk yang sudah telanjut tercommit, lebih tepatnya mundur ke belakang (memindahkan posisi HEAD)
+$ git reset <mode> hash
+
+SOFT : perubahan di repository, namun masih ada di staging index
+MIXED : kebalikan soft ; untuk working directory belum terubah
+HARD : perubahan di repository dan stagging index, dan working directory hilang hilang 
+bisa undo selama belum melakukan coomit (semua bisa)
+
+# commit amend : jika terjadi kekurang saat commit, perintah ini akan menimpa komit sebelumnya dan di gabung menjadi satu
+$ git commit --amend -m "your commit"
+
+# versi sebelumnya
+$ git checkout hash namefile
+$ git checkou master kembali ke pling baru
+
+# snapshot sebelumnya
+$ git checkout hash
+
+Git Branch
+# melihat branch
+$ git branch --show-current
+
+#Git Revert commit => membatalkan commit (kebalikan dari commit yang dipilih) dan mebuat commit baru
+$ git revert hash
+
+# Git Ignore
+-> file yang di akan ditrack
+dengan menambah file .gitignore
+
+#Blame => unutk mengetahui user yang mengedit atau menambahkan suatu baris atau code
+$ git blame name file
+
+#Git alias => membuat shortcut perintah git
+$ git global --config alias.nama alias  perintah_git
+
